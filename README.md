@@ -12,5 +12,5 @@ Instructions to use:
 2. By default, '/' route loads links for courses on page 1.
 3. The user can pass query argument page to go to a specific page number.
 eg : '/?page=2' gives links on page 2 and so on.
-Open All button on the top of the page opens all links in separate Tabs. 
-Note: Make sure your browser allows multiple pages to be opened at once. If not allowed, only the first page in the list opens.
+4. Open All button on the top of the page opens all links in separate Tabs. 
+Note : Make sure your browser allows multiple pages to be opened at once. If not allowed, only the first page in the list opens.
