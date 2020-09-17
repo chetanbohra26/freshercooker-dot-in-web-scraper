@@ -1,0 +1,16 @@
+{
+  "name": "fresher",
+  "version": "1.0.0",
+  "description": "HTML Parsing for freshercooker.in",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "darkwolf",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "opn": "^6.0.0"
+  }
+}
