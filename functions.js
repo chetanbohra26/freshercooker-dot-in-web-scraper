@@ -46,16 +46,26 @@ async function getUdemyLinks(pageNo = 1) {
             let { title, link } = item;
             try {
                 getHTML(link).then(secondaryHtml => {
-                    let url = ('' + secondaryHtml).split('https://click.linksynergy.com/deeplink?id=')[1].split('"')[0];
-                    url = 'https://click.linksynergy.com/deeplink?id=' + url;
-                    //console.log(url);
-                    finalItems.push({ title: title, link: url });
-                    //opn(url);
-                    if (finalItems.length === 14) {
-                        //console.log(finalItems);
-                        resolve(finalItems);
+                    try {
+                        let url = ('' + secondaryHtml).split('https://click.linksynergy.com/deeplink?id=')[1].split('"')[0];
+                        url = 'https://click.linksynergy.com/deeplink?id=' + url;
+                        //console.log(url);
+                        finalItems.push({ title: title, link: url });
+                        //opn(url);
+                        if (finalItems.length === 14) {
+                            //console.log(finalItems);
+                            resolve(finalItems);
+                        }
+                    }
+                    catch (ex) {
+                        finalItems.push({ title: title, link: link });
+                        console.log('Link==============>', link);
+                        if (finalItems.length === 14) {
+                            resolve(finalItems);
+                        }
                     }
                 });
+
             } catch (error) {
                 console.log()
                 console.log('Exception');
