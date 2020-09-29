@@ -1,3 +1,5 @@
+//old copy
+
 const https = require('https');
 const cheerio = require('cheerio');
 
@@ -41,31 +43,36 @@ async function getUdemyLinks(pageNo = 1) {
 
         links = Array.from(new Set(links));
         console.log(links);
-
-        const coursePromises = [];
+        let finalItems = [];
         for (item of links) {
             let { title, link } = item;
-            let promise = new Promise((resolve, reject) => {
+            try {
                 getHTML(link).then(secondaryHtml => {
                     try {
                         let url = ('' + secondaryHtml).split('https://click.linksynergy.com/deeplink?id=')[1].split('"')[0];
                         url = 'https://click.linksynergy.com/deeplink?id=' + url;
                         //console.log(url);
-                        resolve({ title: title, link: url });
+                        finalItems.push({ title: title, link: url });
+                        //opn(url);
+                        if (finalItems.length === 14) {
+                            //console.log(finalItems);
+                            resolve(finalItems);
+                        }
                     }
                     catch (ex) {
-                        resolve({ title: title, link: link });
+                        finalItems.push({ title: title, link: link });
+                        console.log('Link==============>', link);
+                        if (finalItems.length === 14) {
+                            resolve(finalItems);
+                        }
                     }
                 });
-            });
-            coursePromises.push(promise);
+
+            } catch (error) {
+                console.log()
+                console.log('Exception');
+            }
         }
-        //console.log(coursePromises);
-        Promise.all(coursePromises).then(result => {
-            console.log(result);
-            console.log(`${result.length} courses returned...`)
-            resolve(result);
-        });
     });
 }
 
