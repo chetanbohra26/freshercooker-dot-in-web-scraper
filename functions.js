@@ -111,6 +111,7 @@ function getPageHTML(urls) {
                         padding: 10px;
                         margin: 0px;
                         margin-left: 10px;
+                        transition: all 0.3s ease;
                     }
                     .btnAll:hover{
                         background-color: white;
