@@ -75,7 +75,7 @@ function getPageHTML(urls) {
         let item = `
 					<tr>
 						<td> ${urlObj.title} </td>
-						<td><a href="${urlObj.link}" target="_blank">Link</a> </td>
+						<td class="link"><a href="${urlObj.link}" target="_blank">Link</a> </td>
 					</tr>
 		`;
 
@@ -87,12 +87,40 @@ function getPageHTML(urls) {
 				<title>Udemy Links</title>
 				<style>
 					th,td {
-						padding: 10px;
-						border: 1px solid black;
-					}
+						padding: 15px;
+                        border: 1px solid black;
+                    }
+                    th{
+                        padding: 20px;
+                        background-color: lightgray;
+                    }
 					table {
-						border: 2px solid black;
-					}
+                        border-spacing: 0px;
+                        border: 1px solid black;
+                    }
+                    .link{
+                        width: 5rem;
+                        text-align:center;
+                    }
+                    a{
+                        text-decoration: none;
+                    }
+                    .btnAll{
+                        background-color: black;
+                        color: white;
+                        padding: 10px;
+                        margin: 0px;
+                        margin-left: 10px;
+                    }
+                    .btnAll:hover{
+                        background-color: white;
+                        color: black;
+                    }
+                    .btnContainer{
+                        padding: 10px;
+                        margin: 0px;
+                        border-spacing: 0px;
+                    }
 				</style>
 				<script>
 					function _open(){
@@ -103,9 +131,12 @@ function getPageHTML(urls) {
 					}
 				</script>
 			</head>
-			<body>
-				<button onclick="_open()">Open All</button><br><br>
-				<table>
+            <body>
+                <div class="btnContainer">
+                Make sure to allow opening multiple links
+				<button class="btnAll" onclick="_open()">Open All</button><br><br>
+                </div>
+                <table>
 					<tr>
 						<th>Course Name</th>
 						<th>Link</th>
